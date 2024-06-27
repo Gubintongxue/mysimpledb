@@ -42,11 +42,98 @@ apt install ruby-rspec-core
 
 `ruby`和`rspec`版本基本未对本单元测试造成影响，如果存在问题，可提出。
 
+补充:Centos7下安装ruby,rspec
+
+在CentOS 7上安装`gem`，需要先安装Ruby，因为`gem`是Ruby的包管理工具。
+
+使用`yum`包管理器直接安装Ruby，它会自动包含`gem`工具。
+
+```
+sudo yum update -y
+sudo yum install -y ruby 
+gem install rspec
+```
+
+![image-20240627231209348](image/image-20240627231209348.png)
+
+![image-20240627231231577](image/image-20240627231231577.png)
+
+```
+#替换源
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+gem install rspec
+```
+
+![image-20240627231706826](image/image-20240627231706826.png)
+
 至此我们的测试环境便已经安装完成了。
+
+
 
 ### 1.1 ruby和rspec介绍
 
-待补充
+### Ruby
+
+**Ruby** 是一种动态的、开源的编程语言，注重简单性和生产力。它由日本的松本行弘（Yukihiro "Matz" Matsumoto）创建，并于1995年发布。Ruby的语法优雅且易读，使编写代码变得更加愉快和高效。
+
+#### 主要特点：
+
+1. **面向对象**：在Ruby中，一切皆对象，包括基本数据类型。
+2. **动态类型和鸭子类型**：Ruby是动态类型语言，不需要声明变量类型。鸭子类型意味着对象的适用性由是否具有特定方法和属性决定，而不是对象的类型。
+3. **表达性语法**：Ruby的语法设计简洁明了，易于阅读和编写，提升了编程的愉悦感和生产力。
+4. **元编程**：Ruby支持元编程，允许程序将其他程序作为其数据进行处理。
+5. **丰富的标准库**：Ruby附带了一个涵盖广泛任务的标准库，从处理文本文件到构建Web服务器。
+
+#### 常见应用场景：
+
+- **Web开发**：如Ruby on Rails，这是一个流行的Web应用框架。
+- **自动化脚本**：用于编写脚本和自动化任务。
+- **数据处理**：用于数据处理和分析。
+
+关于更多详细信息，可以访问官方Ruby网站。
+
+### RSpec
+
+**RSpec** 是Ruby编程语言的测试工具。它是一个行为驱动开发（BDD）框架，专注于应用程序的行为。RSpec由Steven Baker创建，现在由RSpec核心团队维护。
+
+#### 主要特点：
+
+1. **描述性语法**：RSpec使用自然语言语法，使测试易于阅读和理解。
+
+2. 模块化
+
+   ：RSpec由多个库组成，每个库有特定的用途：
+
+   - `rspec-core`：提供编写可执行示例的结构。
+   - `rspec-expectations`：提供表达预期结果的API。
+   - `rspec-mocks`：提供测试替身功能，如模拟和存根。
+   - `rspec-rails`：将RSpec与Ruby on Rails集成。
+
+3. **匹配器**：RSpec提供灵活的机制将预期结果与实际结果进行匹配。
+
+4. **钩子**：RSpec支持在测试前后运行代码的设置和拆卸钩子。
+
+5. **专注于BDD**：RSpec鼓励开发者专注于应用程序的期望行为，而不是实现细节。
+
+#### RSpec语法示例：
+
+```
+require 'rspec'
+
+RSpec.describe '一个示例组' do
+  it '有一个示例' do
+    expect(1 + 1).to eq(2)
+  end
+end
+```
+
+#### 使用场景：
+
+- **单元测试**：测试代码的单个单元，以确保其正常工作。
+- **集成测试**：测试应用程序的不同部分如何协同工作。
+- **行为驱动开发**：通过测试定义应用程序的期望行为，然后开发满足这些测试的代码。
+
+关于更多详细信息，可以访问[官方RSpec网站](https://rspec.info/)。
 
 ## 2\. 如何编写和使用我们的第一个单元测试？
 
@@ -384,6 +471,42 @@ sudo apt install vim
    sudo apt install code
    ```
 
+补充：Centos7下安装C++开发环境命令
+
+在CentOS 7上安装C++开发环境，可以通过以下步骤实现。主要是安装GNU编译器集合（GCC）及其C++编译器组件（g++）。
+
+### 安装步骤
+
+1. **更新软件包列表**： 首先，更新系统上的软件包列表，以确保安装最新版本的软件包。
+
+   ```
+   sudo yum update -y
+   ```
+
+   ![image-20240627230206080](image/image-20240627230206080.png)
+
+2. **安装GCC和g++**： 使用`yum`包管理器安装GCC和g++。GCC是GNU Compiler Collection的缩写，其中包含C和C++编译器。
+
+   ```
+   sudo yum install -y gcc gcc-c++
+   ```
+
+3. **验证安装**： 安装完成后，验证是否成功安装并查看GCC和g++的版本。
+
+   ```
+   g++ --version
+   ```
+
+   ![image-20240627230601743](image/image-20240627230601743.png)
+
+4. **安装开发工具包（可选）**： 如果你需要更多的开发工具，可以安装开发工具包。这将安装一组常用的开发工具，包括调试器和构建工具。
+
+   ```
+   sudo yum groupinstall -y "Development Tools"
+   ```
+
+
+
 ### 编写和运行简单的 C++ 程序
 
 你可以使用你喜欢的编辑器创建一个简单的 C++ 程序来测试编译器。例如，创建一个名为 `hello.cpp` 的文件，并写入以下内容：
@@ -450,5 +573,7 @@ gem sources --add http://ruby.taobao.org/ --remove https://rubygems.org/
 ```
 
 gem install rspec安装好了 
+
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 
 ![image-20240620200107191](image/image-20240620200107191.png)
