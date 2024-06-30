@@ -42,7 +42,7 @@ apt install ruby-rspec-core
 
 `ruby`和`rspec`版本基本未对本单元测试造成影响，如果存在问题，可提出。
 
-补充:Centos7下安装ruby,rspec
+#### 补充:Centos7下安装ruby,rspec
 
 在CentOS 7上安装`gem`，需要先安装Ruby，因为`gem`是Ruby的包管理工具。
 
@@ -351,6 +351,8 @@ repec没安装好，重新安装，见 解决gem安装慢
 
 ![image-20240620200247176](image/image-20240620200247176.png)
 
+![image-20240630232737586](image/image-20240630232737586.png)
+
 ## 3\. 总结
 
 作为教程第一章，实现REPL是非常基础的。由于我们使用了`std::string`，故省去了很多`c_str`内存管理以及长度等一系列繁琐的事情。同时基于我们的测试进行开发，作为教程来说可以让大家更加清楚该朝着哪个方向前进。下一章我们将对输入的命令进行更进一步的分析。
@@ -362,6 +364,7 @@ db.cpp
 ```C++
 #include <iostream>
 #include <string>
+#include <cstdlib> #EXIT_SUCCESS在这个库
 
 class DB
 {
@@ -414,6 +417,8 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
+
+
 
 补充：ubuntu下安装C++环境部分命令
 
@@ -470,6 +475,8 @@ sudo apt install vim
    sudo apt update
    sudo apt install code
    ```
+
+
 
 补充：Centos7下安装C++开发环境命令
 
